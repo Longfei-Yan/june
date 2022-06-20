@@ -16,7 +16,7 @@ class SetTheme
      */
     public function handle($request, Closure $next)
     {
-        Theme::set('default');
+        Theme::set('00001');
         return $next($request);
     }
 }

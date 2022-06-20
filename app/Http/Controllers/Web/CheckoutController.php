@@ -9,7 +9,8 @@ class CheckoutController extends Controller
 {
     public function index()
     {
-        return view('checkout');
+        $moduleName = ['moduleName'=>'checkout'];
+        return view('checkout', $moduleName);
     }
 
     public function store()

@@ -9,12 +9,13 @@ class UserController extends Controller
 {
     public function create()
     {
-
+        return view('register');
     }
 
     public function myAccount()
     {
-        return view('my-account');
+        $moduleName = ['moduleName'=>'account'];
+        return view('my-account', $moduleName);
     }
 
     public function store()

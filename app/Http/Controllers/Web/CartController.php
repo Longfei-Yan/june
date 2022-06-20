@@ -9,6 +9,7 @@ class CartController extends Controller
 {
     public function index()
     {
-        return view('cart');
+        $moduleName = ['moduleName'=>'cart'];
+        return view('cart', $moduleName);
     }
 }

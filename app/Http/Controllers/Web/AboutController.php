@@ -9,6 +9,7 @@ class AboutController extends Controller
 {
     public function index()
     {
-        return view('about');
+        $moduleName = ['moduleName'=>'about us'];
+        return view('about', $moduleName);
     }
 }

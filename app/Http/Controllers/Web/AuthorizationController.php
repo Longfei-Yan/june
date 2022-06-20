@@ -9,7 +9,8 @@ class AuthorizationController extends Controller
 {
     public function create()
     {
-        return view('login');
+        $moduleName = ['moduleName'=>'login'];
+        return view('login', $moduleName);
     }
 
     public function store()

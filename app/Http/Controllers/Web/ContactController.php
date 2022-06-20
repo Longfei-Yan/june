@@ -9,7 +9,8 @@ class ContactController extends Controller
 {
     public function index()
     {
-        return view('contact');
+        $moduleName = ['moduleName'=>'contact'];
+        return view('contact', $moduleName);
     }
 
     public function store()
