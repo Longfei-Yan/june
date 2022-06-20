@@ -21,7 +21,7 @@ class AuthorizationController extends Controller
             'password' => 'required'
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $request->has('remember'))) {
             return redirect()->route('my-account', [Auth::user()]);
         } else {
             return redirect()->back()->withInput();
