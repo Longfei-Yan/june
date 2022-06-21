@@ -24,7 +24,7 @@ Route::group(['namespace' => 'Web', 'middleware'=>'setTheme:WEB_THEME'], functio
     //用户
     Route::get('/register', 'UserController@create')->name('register');
     Route::post('/register', 'UserController@store')->name('register');
-    Route::get('/my-account', 'UserController@myAccount')->name('my-account');
+    Route::get('/my-account', 'UserController@myAccount')->middleware('auth')->name('my-account');
 
     //认证
     Route::get('/login', 'AuthorizationController@create')->name('login');
@@ -40,8 +40,8 @@ Route::group(['namespace' => 'Web', 'middleware'=>'setTheme:WEB_THEME'], functio
     Route::get('/about', 'AboutController@index')->name('about');
     Route::get('/contact', 'ContactController@index')->name('contact');
     Route::post('/contact', 'ContactController@store')->name('contact');
-    Route::get('/cart', 'CartController@index')->name('cart');
-    Route::get('/checkout', 'CheckoutController@index')->name('checkout');
+    Route::get('/cart', 'CartController@index')->middleware('auth')->name('cart');
+    Route::get('/checkout', 'CheckoutController@index')->middleware('auth')->name('checkout');
 
     Route::fallback(function(){
         return response()->view('404', [], 404);
