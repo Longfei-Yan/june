@@ -14,10 +14,12 @@ class UserController extends Controller
         return view('register');
     }
 
-    public function myAccount(User $user)
+    public function myAccount(User $user, Request $request)
     {
-        $moduleName = ['moduleName'=>'account'];
-        return view('my-account', $moduleName);
+        $moduleName = 'account';
+        $addresses = $request->user()->addresses;
+
+        return view('my-account', compact('moduleName', 'addresses'));
     }
 
     public function store(Request $request)
