@@ -25,6 +25,7 @@ Route::group(['namespace' => 'Web', 'middleware'=>'setTheme:WEB_THEME'], functio
     Route::get('/register', 'UserController@create')->name('register');
     Route::post('/register', 'UserController@store')->name('register');
     Route::get('/my-account', 'UserController@myAccount')->middleware('auth')->name('my-account');
+    Route::get('/user-addresses', 'UserAddressController@index')->middleware('auth')->name('user-addresses');
 
     //认证
     Route::get('/login', 'AuthorizationController@create')->name('login');
