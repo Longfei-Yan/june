@@ -22,7 +22,7 @@ class AuthorizationController extends Controller
         ]);
 
         if (Auth::attempt($credentials, $request->has('remember'))) {
-            return redirect()->route('my-account', [Auth::user()]);
+            return redirect()->route('users.show', [Auth::user()]);
         } else {
             return redirect()->back()->withInput();
         }

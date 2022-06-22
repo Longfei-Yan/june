@@ -21,16 +21,28 @@ Route::group(['namespace' => 'Web', 'middleware'=>'setTheme:WEB_THEME'], functio
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/index', 'HomeController@index')->name('index');
 
-    //用户
-    Route::get('/register', 'UserController@create')->name('register');
-    Route::post('/register', 'UserController@store')->name('register');
-    Route::get('/my-account', 'UserController@myAccount')->middleware('auth')->name('my-account');
-    Route::get('/user-addresses', 'UserAddressController@index')->middleware('auth')->name('user-addresses');
-
     //认证
     Route::get('/login', 'AuthorizationController@create')->name('login');
     Route::post('/login', 'AuthorizationController@store')->name('login');
     Route::delete('/login', 'AuthorizationController@destroy')->name('logout');
+
+    //用户
+    Route::get('/register', 'UserController@create')->name('register');
+    Route::post('/register', 'UserController@store')->name('register');
+    Route::get('/my-account', 'UserController@myAccount')->middleware('auth')->name('my-account');
+
+    //用户resource
+    Route::get('/users/create', 'UserController@crate')->name('users.create');
+    Route::post('/users', 'UserController@store')->name('users.store');
+    Route::get('/users', 'UserController@index')->middleware('auth')->name('users.index');
+    Route::get('/users/{user}', 'UserController@show')->middleware('auth')->name('users.show');
+    Route::get('/users/{user}/edit', 'UserController@edit')->middleware('auth')->name('users.edit');
+    Route::patch('/users/{user}', 'UserController@update')->middleware('auth')->name('users.update');
+    Route::delete('/users/{user}', 'UserController@destroy')->middleware('auth')->name('users.destroy');
+
+    //用户地址
+    Route::get('/user-addresses', 'UserAddressController@index')->middleware('auth')->name('user-addresses.index');
+
 
     //商品
     Route::get('/products', 'ProductController@index')->name('products');
