@@ -22,9 +22,9 @@ Route::group(['namespace' => 'Web', 'middleware'=>'setTheme:WEB_THEME'], functio
     Route::get('/index', 'HomeController@index')->name('index');
 
     //认证
-    Route::get('/login', 'AuthorizationController@create')->name('login');
-    Route::post('/login', 'AuthorizationController@store')->name('login');
-    Route::delete('/login', 'AuthorizationController@destroy')->name('logout');
+    Route::get('/login', 'AuthorizationController@create')->name('auth.create');
+    Route::post('/login', 'AuthorizationController@store')->name('auth.store');
+    Route::delete('/logout', 'AuthorizationController@destroy')->name('auth.destroy');
 
     //用户
     Route::get('/register', 'UserController@create')->name('register');
