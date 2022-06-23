@@ -57,12 +57,14 @@ class UserController extends Controller
             'first_name' => 'required|max:50',
             'last_name' => 'required|max:50',
             'password' => 'nullable|confirmed|min:6',
-            'birthdate' => 'nullable'
+            'birthdate' => 'nullable',
+            'gender' => 'nullable',
         ]);
         $data = [];
         $data['first_name'] = $request->first_name;
         $data['last_name'] = $request->last_name;
         $data['birthdate'] = $request->birthdate;
+        $data['gender'] = $request->gender;
         if ($request->password) {
             $data['password'] = bcrypt($request->password);
         }
