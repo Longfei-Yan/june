@@ -13,6 +13,6 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index');
-    $router->get('/users', 'UserController@index');
+    $router->resource('/users', UserController::class);
 
 });
