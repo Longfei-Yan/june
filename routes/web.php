@@ -36,7 +36,7 @@ Route::group(['namespace' => 'Web', 'middleware'=>'setTheme:WEB_THEME'], functio
     Route::get('/user-addresses', 'UserAddressController@index')->middleware('auth')->name('user-addresses.index');
     //商品
     Route::get('/products', 'ProductController@index')->name('products.index');
-    Route::get('/products/{id}', 'ProductController@show')->name('products.show');
+    Route::get('/products/{product}', 'ProductController@show')->name('products.show');
     //服务或隐私政策
     Route::get('/services', 'ServiceController@index')->name('services.index');
     //关于我们
