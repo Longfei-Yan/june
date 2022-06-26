@@ -13,6 +13,7 @@ return [
         'extensions'    => '扩展',
         'scaffold'      => '代码生成器',
         'icons'         => '图标',
-        'users'         => '用户  ',
+        'users'         => '用户',
+        'products'      => '商品',
     ],
 ];
