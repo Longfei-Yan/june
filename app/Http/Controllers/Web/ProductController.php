@@ -3,14 +3,16 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $moduleName = ['moduleName'=>'products'];
-        return view('products', $moduleName);
+        $moduleName = 'products';
+        $products = Product::query()->where('on_sale', true)->paginate();
+        return view('products', compact('moduleName', 'products'));
     }
 
     public function show()
