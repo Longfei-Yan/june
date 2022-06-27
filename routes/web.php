@@ -51,6 +51,8 @@ Route::group(['namespace' => 'Web', 'middleware'=>'setTheme:WEB_THEME'], functio
     Route::post('/contact', 'ContactController@store')->name('contact.store');
     //购物车
     Route::get('/cart', 'CartController@index')->middleware('auth')->name('cart.index');
+    Route::post('/cart', 'CartController@add')->middleware('auth')->name('cart.add');
+
     //结账
     Route::get('/checkout', 'CheckoutController@index')->middleware('auth')->name('checkout.index');
     //404
