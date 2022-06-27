@@ -4,14 +4,17 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\CartItem;
+use App\Models\ProductSku;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $moduleName = ['moduleName'=>'cart'];
-        return view('cart', $moduleName);
+        $moduleName = 'cart';
+        $cartItems = $request->user()->cartItems()->with(['productSku.product'])->get();
+
+        return view('cart', compact('moduleName', 'cartItems'));
     }
 
     public function add(Request $request)
@@ -37,5 +40,19 @@ class CartController extends Controller
         }
 
         return [];
+    }
+
+    public function remove(ProductSku $sku, Request $request)
+    {
+        $request->user()->cartItems()->where('product_sku_id', $sku->id)->delete();
+
+        return redirect()->route('cart.index');
+    }
+
+    public function removeAll(Request $request)
+    {
+        $request->user()->cartItems()->delete();
+
+        return redirect()->route('cart.index');
     }
 }

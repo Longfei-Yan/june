@@ -52,6 +52,8 @@ Route::group(['namespace' => 'Web', 'middleware'=>'setTheme:WEB_THEME'], functio
     //购物车
     Route::get('/cart', 'CartController@index')->middleware('auth')->name('cart.index');
     Route::post('/cart', 'CartController@add')->middleware('auth')->name('cart.add');
+    Route::delete('/cart/{sku}', 'CartController@remove')->name('cart.remove');
+    Route::delete('/cart', 'CartController@removeAll')->name('cart.removeAll');
 
     //结账
     Route::get('/checkout', 'CheckoutController@index')->middleware('auth')->name('checkout.index');
