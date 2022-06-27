@@ -61,4 +61,32 @@ class ProductController extends Controller
         $moduleName = 'product';
         return view('product', compact('moduleName', 'product'));
     }
+
+    public function favor(Product $product, Request $request)
+    {
+        $user = $request->user();
+        if ($user->wishlists()->find($product->id)) {
+            return [];
+        }
+
+        $user->wishlists()->attach($product);
+
+        return [];
+    }
+
+    public function disfavor(Product $product, Request $request)
+    {
+        $user = $request->user();
+        $user->favoriteProducts()->detach($product);
+
+        return [];
+    }
+
+    public function wishlists(Request $request)
+    {
+        $moduleName = 'wishlist';
+        $products = $request->user()->wishlists()->paginate();
+
+        return view('wishlist', compact('moduleName', 'products'));
+    }
 }

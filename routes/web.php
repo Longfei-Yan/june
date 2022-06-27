@@ -37,6 +37,11 @@ Route::group(['namespace' => 'Web', 'middleware'=>'setTheme:WEB_THEME'], functio
     //商品
     Route::get('/products', 'ProductController@index')->name('products.index');
     Route::get('/products/{product}', 'ProductController@show')->name('products.show');
+
+    Route::post('products/{product}/favorite', 'ProductController@favor')->middleware('auth')->name('products.favor');
+    Route::delete('products/{product}/favorite', 'ProductController@disfavor')->middleware('auth')->name('products.disfavor');
+    Route::get('/wishlists', 'ProductController@wishlists')->middleware('auth')->name('products.wishlists');
+
     //服务或隐私政策
     Route::get('/services', 'ServiceController@index')->name('services.index');
     //关于我们
