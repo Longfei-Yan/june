@@ -52,12 +52,12 @@ Route::group(['namespace' => 'Web', 'middleware'=>'setTheme:WEB_THEME'], functio
     //购物车
     Route::get('/cart', 'CartController@index')->middleware('auth')->name('cart.index');
     Route::post('/cart', 'CartController@add')->middleware('auth')->name('cart.add');
-    Route::delete('/cart/{sku}', 'CartController@remove')->name('cart.remove');
-    Route::delete('/cart', 'CartController@removeAll')->name('cart.removeAll');
+    Route::delete('/cart/{sku}', 'CartController@remove')->middleware('auth')->name('cart.remove');
+    Route::delete('/cart', 'CartController@removeAll')->middleware('auth')->name('cart.removeAll');
 
     //结账
     Route::get('/checkout', 'CheckoutController@index')->middleware('auth')->name('checkout.index');
-    Route::post('/orders', 'OrdersController@store')->name('orders.store');
+    Route::post('/orders', 'OrdersController@store')->middleware('auth')->name('orders.store');
     //404
     Route::fallback(function(){
         return response()->view('404', [], 404);
