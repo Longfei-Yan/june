@@ -57,6 +57,7 @@ Route::group(['namespace' => 'Web', 'middleware'=>'setTheme:WEB_THEME'], functio
 
     //结账
     Route::get('/checkout', 'CheckoutController@index')->middleware('auth')->name('checkout.index');
+    Route::post('/orders', 'OrdersController@store')->name('orders.store');
     //404
     Route::fallback(function(){
         return response()->view('404', [], 404);

@@ -13,8 +13,12 @@ class CartController extends Controller
     {
         $moduleName = 'cart';
         $cartItems = $request->user()->cartItems()->with(['productSku.product'])->get();
+        $amount = 0;
+        foreach ($cartItems as $item){
+            $amount += $item->productSku->product->price;
+        }
 
-        return view('cart', compact('moduleName', 'cartItems'));
+        return view('cart', compact('moduleName', 'cartItems', 'amount'));
     }
 
     public function add(Request $request)
