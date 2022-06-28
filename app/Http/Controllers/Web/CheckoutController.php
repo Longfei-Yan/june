@@ -15,9 +15,8 @@ class CheckoutController extends Controller
         foreach ($cartItems as $item){
             $amount += $item->productSku->product->price;
         }
-        $addresses = $request->user()->addresses()->orderBy('last_used_at', 'desc')->first();
 
-        return view('checkout', compact('moduleName', 'cartItems', 'amount', 'addresses'));
+        return view('checkout', compact('moduleName', 'cartItems', 'amount'));
     }
 
     public function store()
