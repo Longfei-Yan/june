@@ -15,5 +15,6 @@ return [
         'icons'         => '图标',
         'users'         => '用户',
         'products'      => '商品',
+        'licenses'      => '执照',
     ],
 ];
