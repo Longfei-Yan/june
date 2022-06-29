@@ -16,5 +16,6 @@ Route::group([
     $router->resource('/users', UserController::class);
     $router->resource('/products', ProductController::class);
     $router->resource('/licenses', LicenseController::class);
+    $router->resource('/mails', MailController::class);
 
 });
