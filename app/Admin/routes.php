@@ -20,5 +20,6 @@ Route::group([
     $router->resource('banners', BannerController::class);
     $router->resource('article-categories', ArticleCategoryController::class);
     $router->resource('articles', ArticleController::class);
+    $router->resource('product-categories', ProductCategoryController::class);
 
 });

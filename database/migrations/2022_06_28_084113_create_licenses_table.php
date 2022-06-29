@@ -14,7 +14,7 @@ class CreateLicensesTable extends Migration
     public function up()
     {
         Schema::create('licenses', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name')->default('')->comment('名称');
             $table->string('title')->default('')->comment('标题');
             $table->string('address')->default('')->comment('地址');

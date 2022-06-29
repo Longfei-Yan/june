@@ -73,6 +73,8 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection ship_data
      * @property Grid\Column|Collection extra
      * @property Grid\Column|Collection token
+     * @property Grid\Column|Collection is_directory
+     * @property Grid\Column|Collection path
      * @property Grid\Column|Collection on_sale
      * @property Grid\Column|Collection sold_count
      * @property Grid\Column|Collection review_count
@@ -151,6 +153,8 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection ship_data(string $label = null)
      * @method Grid\Column|Collection extra(string $label = null)
      * @method Grid\Column|Collection token(string $label = null)
+     * @method Grid\Column|Collection is_directory(string $label = null)
+     * @method Grid\Column|Collection path(string $label = null)
      * @method Grid\Column|Collection on_sale(string $label = null)
      * @method Grid\Column|Collection sold_count(string $label = null)
      * @method Grid\Column|Collection review_count(string $label = null)
@@ -234,6 +238,8 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection ship_data
      * @property Show\Field|Collection extra
      * @property Show\Field|Collection token
+     * @property Show\Field|Collection is_directory
+     * @property Show\Field|Collection path
      * @property Show\Field|Collection on_sale
      * @property Show\Field|Collection sold_count
      * @property Show\Field|Collection review_count
@@ -312,6 +318,8 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection ship_data(string $label = null)
      * @method Show\Field|Collection extra(string $label = null)
      * @method Show\Field|Collection token(string $label = null)
+     * @method Show\Field|Collection is_directory(string $label = null)
+     * @method Show\Field|Collection path(string $label = null)
      * @method Show\Field|Collection on_sale(string $label = null)
      * @method Show\Field|Collection sold_count(string $label = null)
      * @method Show\Field|Collection review_count(string $label = null)
