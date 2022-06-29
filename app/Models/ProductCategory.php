@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use Spatie\EloquentSortable\Sortable;
 use Dcat\Admin\Traits\ModelTree;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductCategory extends Model
+class ProductCategory extends Model implements Sortable
 {
     use ModelTree;
 

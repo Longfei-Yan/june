@@ -2,9 +2,6 @@
 
 namespace App\Admin\Controllers;
 
-use Dcat\Admin\Layout\Row;
-use Dcat\Admin\Layout\Content;
-use Dcat\Admin\Tree;
 use App\Admin\Repositories\ProductCategory;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
@@ -13,14 +10,52 @@ use Dcat\Admin\Http\Controllers\AdminController;
 
 class ProductCategoryController extends AdminController
 {
-    public function index(Content $content)
+    /**
+     * Make a grid builder.
+     *
+     * @return Grid
+     */
+    protected function grid()
     {
-        return $content->header('树状模型')
-            ->body(function (Row $row) {
-                $tree = new Tree(new ProductCategory());
-
-                $row->column(12, $tree);
+        return Grid::make(new ProductCategory(), function (Grid $grid) {
+            $grid->column('id')->bold()->sortable();
+            $grid->title->tree(false);
+            $grid->order->orderable(); // 开启排序功能
+            $grid->column('is_directory')->display(function ($value) {
+                return $value ? '是' : '否';
             });
+            $grid->column('depth');
+            $grid->column('path');
+            $grid->column('created_at');
+            $grid->column('updated_at')->sortable();
+
+            $grid->filter(function (Grid\Filter $filter) {
+                $filter->equal('id');
+
+            });
+        });
+    }
+
+    /**
+     * Make a show builder.
+     *
+     * @param mixed $id
+     *
+     * @return Show
+     */
+    protected function detail($id)
+    {
+        return Show::make($id, new ProductCategory(), function (Show $show) {
+            $show->field('id');
+            $show->field('parent_id');
+            $show->field('order');
+            $show->field('title');
+            $show->field('is_directory');
+            $show->field('depth');
+            $show->field('path');
+            $show->field('created_at');
+            $show->field('updated_at');
+        });
     }
 
     /**
@@ -32,12 +67,12 @@ class ProductCategoryController extends AdminController
     {
         return Form::make(new ProductCategory(), function (Form $form) {
             $form->display('id');
-            $form->text('parent_id');
-            $form->text('order');
-            $form->text('title');
-            $form->text('is_directory');
-            $form->text('depth');
-            $form->text('path');
+            $form->select('parent_id');
+            $form->hidden('order');
+            $form->text('title')->rules('require');
+            $form->hidden('is_directory');
+            $form->hidden('depth');
+            $form->hidden('path');
 
             $form->display('created_at');
             $form->display('updated_at');
