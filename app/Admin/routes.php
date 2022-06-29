@@ -13,10 +13,11 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index');
-    $router->resource('/users', UserController::class);
-    $router->resource('/products', ProductController::class);
-    $router->resource('/licenses', LicenseController::class);
-    $router->resource('/mails', MailController::class);
-    $router->resource('/banners', BannerController::class);
+    $router->resource('users', UserController::class);
+    $router->resource('products', ProductController::class);
+    $router->resource('licenses', LicenseController::class);
+    $router->resource('mails', MailController::class);
+    $router->resource('banners', BannerController::class);
+    $router->resource('article-categories', ArticleCategoryController::class);
 
 });
