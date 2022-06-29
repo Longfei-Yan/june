@@ -19,5 +19,6 @@ Route::group([
     $router->resource('mails', MailController::class);
     $router->resource('banners', BannerController::class);
     $router->resource('article-categories', ArticleCategoryController::class);
+    $router->resource('articles', ArticleController::class);
 
 });

@@ -39,6 +39,8 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection avatar
      * @property Grid\Column|Collection remember_token
      * @property Grid\Column|Collection depth
+     * @property Grid\Column|Collection category_id
+     * @property Grid\Column|Collection content
      * @property Grid\Column|Collection image
      * @property Grid\Column|Collection product_sku_id
      * @property Grid\Column|Collection amount
@@ -115,6 +117,8 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection avatar(string $label = null)
      * @method Grid\Column|Collection remember_token(string $label = null)
      * @method Grid\Column|Collection depth(string $label = null)
+     * @method Grid\Column|Collection category_id(string $label = null)
+     * @method Grid\Column|Collection content(string $label = null)
      * @method Grid\Column|Collection image(string $label = null)
      * @method Grid\Column|Collection product_sku_id(string $label = null)
      * @method Grid\Column|Collection amount(string $label = null)
@@ -196,6 +200,8 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection avatar
      * @property Show\Field|Collection remember_token
      * @property Show\Field|Collection depth
+     * @property Show\Field|Collection category_id
+     * @property Show\Field|Collection content
      * @property Show\Field|Collection image
      * @property Show\Field|Collection product_sku_id
      * @property Show\Field|Collection amount
@@ -272,6 +278,8 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection avatar(string $label = null)
      * @method Show\Field|Collection remember_token(string $label = null)
      * @method Show\Field|Collection depth(string $label = null)
+     * @method Show\Field|Collection category_id(string $label = null)
+     * @method Show\Field|Collection content(string $label = null)
      * @method Show\Field|Collection image(string $label = null)
      * @method Show\Field|Collection product_sku_id(string $label = null)
      * @method Show\Field|Collection amount(string $label = null)
