@@ -13,6 +13,7 @@ namespace Dcat\Admin {
     /**
      * @property Grid\Column|Collection price
      * @property Grid\Column|Collection stock
+     * @property Grid\Column|Collection order
      * @property Grid\Column|Collection id
      * @property Grid\Column|Collection name
      * @property Grid\Column|Collection type
@@ -22,7 +23,6 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection updated_at
      * @property Grid\Column|Collection is_enabled
      * @property Grid\Column|Collection parent_id
-     * @property Grid\Column|Collection order
      * @property Grid\Column|Collection icon
      * @property Grid\Column|Collection uri
      * @property Grid\Column|Collection extension
@@ -78,6 +78,13 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection on_sale
      * @property Grid\Column|Collection sold_count
      * @property Grid\Column|Collection review_count
+     * @property Grid\Column|Collection domain
+     * @property Grid\Column|Collection license_id
+     * @property Grid\Column|Collection product_ids
+     * @property Grid\Column|Collection article_ids
+     * @property Grid\Column|Collection mail_id
+     * @property Grid\Column|Collection banner_id
+     * @property Grid\Column|Collection process_status
      * @property Grid\Column|Collection country
      * @property Grid\Column|Collection province
      * @property Grid\Column|Collection city
@@ -93,6 +100,7 @@ namespace Dcat\Admin {
      *
      * @method Grid\Column|Collection price(string $label = null)
      * @method Grid\Column|Collection stock(string $label = null)
+     * @method Grid\Column|Collection order(string $label = null)
      * @method Grid\Column|Collection id(string $label = null)
      * @method Grid\Column|Collection name(string $label = null)
      * @method Grid\Column|Collection type(string $label = null)
@@ -102,7 +110,6 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection updated_at(string $label = null)
      * @method Grid\Column|Collection is_enabled(string $label = null)
      * @method Grid\Column|Collection parent_id(string $label = null)
-     * @method Grid\Column|Collection order(string $label = null)
      * @method Grid\Column|Collection icon(string $label = null)
      * @method Grid\Column|Collection uri(string $label = null)
      * @method Grid\Column|Collection extension(string $label = null)
@@ -158,6 +165,13 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection on_sale(string $label = null)
      * @method Grid\Column|Collection sold_count(string $label = null)
      * @method Grid\Column|Collection review_count(string $label = null)
+     * @method Grid\Column|Collection domain(string $label = null)
+     * @method Grid\Column|Collection license_id(string $label = null)
+     * @method Grid\Column|Collection product_ids(string $label = null)
+     * @method Grid\Column|Collection article_ids(string $label = null)
+     * @method Grid\Column|Collection mail_id(string $label = null)
+     * @method Grid\Column|Collection banner_id(string $label = null)
+     * @method Grid\Column|Collection process_status(string $label = null)
      * @method Grid\Column|Collection country(string $label = null)
      * @method Grid\Column|Collection province(string $label = null)
      * @method Grid\Column|Collection city(string $label = null)
@@ -178,6 +192,7 @@ namespace Dcat\Admin {
     /**
      * @property Show\Field|Collection price
      * @property Show\Field|Collection stock
+     * @property Show\Field|Collection order
      * @property Show\Field|Collection id
      * @property Show\Field|Collection name
      * @property Show\Field|Collection type
@@ -187,7 +202,6 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection updated_at
      * @property Show\Field|Collection is_enabled
      * @property Show\Field|Collection parent_id
-     * @property Show\Field|Collection order
      * @property Show\Field|Collection icon
      * @property Show\Field|Collection uri
      * @property Show\Field|Collection extension
@@ -243,6 +257,13 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection on_sale
      * @property Show\Field|Collection sold_count
      * @property Show\Field|Collection review_count
+     * @property Show\Field|Collection domain
+     * @property Show\Field|Collection license_id
+     * @property Show\Field|Collection product_ids
+     * @property Show\Field|Collection article_ids
+     * @property Show\Field|Collection mail_id
+     * @property Show\Field|Collection banner_id
+     * @property Show\Field|Collection process_status
      * @property Show\Field|Collection country
      * @property Show\Field|Collection province
      * @property Show\Field|Collection city
@@ -258,6 +279,7 @@ namespace Dcat\Admin {
      *
      * @method Show\Field|Collection price(string $label = null)
      * @method Show\Field|Collection stock(string $label = null)
+     * @method Show\Field|Collection order(string $label = null)
      * @method Show\Field|Collection id(string $label = null)
      * @method Show\Field|Collection name(string $label = null)
      * @method Show\Field|Collection type(string $label = null)
@@ -267,7 +289,6 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection updated_at(string $label = null)
      * @method Show\Field|Collection is_enabled(string $label = null)
      * @method Show\Field|Collection parent_id(string $label = null)
-     * @method Show\Field|Collection order(string $label = null)
      * @method Show\Field|Collection icon(string $label = null)
      * @method Show\Field|Collection uri(string $label = null)
      * @method Show\Field|Collection extension(string $label = null)
@@ -323,6 +344,13 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection on_sale(string $label = null)
      * @method Show\Field|Collection sold_count(string $label = null)
      * @method Show\Field|Collection review_count(string $label = null)
+     * @method Show\Field|Collection domain(string $label = null)
+     * @method Show\Field|Collection license_id(string $label = null)
+     * @method Show\Field|Collection product_ids(string $label = null)
+     * @method Show\Field|Collection article_ids(string $label = null)
+     * @method Show\Field|Collection mail_id(string $label = null)
+     * @method Show\Field|Collection banner_id(string $label = null)
+     * @method Show\Field|Collection process_status(string $label = null)
      * @method Show\Field|Collection country(string $label = null)
      * @method Show\Field|Collection province(string $label = null)
      * @method Show\Field|Collection city(string $label = null)

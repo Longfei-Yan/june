@@ -21,5 +21,6 @@ Route::group([
     $router->resource('article-categories', ArticleCategoryController::class);
     $router->resource('articles', ArticleController::class);
     $router->resource('product-categories', ProductCategoryController::class);
+    $router->resource('sites', SiteController::class);
 
 });

@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "dcat/laravel-admin",
-            "version": "2.2.0-beta",
+            "version": "2.2.2-beta",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jqhph/dcat-admin.git",
-                "reference": "904d434f9479dd2957342cdd75e1a8035d17f1fb"
+                "reference": "150f46486871b5ca57992f7eed3787e0c1c49bef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jqhph/dcat-admin/zipball/904d434f9479dd2957342cdd75e1a8035d17f1fb",
-                "reference": "904d434f9479dd2957342cdd75e1a8035d17f1fb",
+                "url": "https://api.github.com/repos/jqhph/dcat-admin/zipball/150f46486871b5ca57992f7eed3787e0c1c49bef",
+                "reference": "150f46486871b5ca57992f7eed3787e0c1c49bef",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -77,9 +77,9 @@
             ],
             "support": {
                 "issues": "https://github.com/jqhph/dcat-admin/issues",
-                "source": "https://github.com/jqhph/dcat-admin/tree/2.2.0-beta"
+                "source": "https://github.com/jqhph/dcat-admin/tree/2.2.2-beta"
             },
-            "time": "2022-02-19T16:03:19+00:00"
+            "time": "2022-06-27T14:42:39+00:00"
         },
         {
             "name": "doctrine/cache",
