@@ -1,4 +1,4 @@
-<?php 
+<?php
 return [
     'labels' => [
         'ProductCategory' => '商品分类',
@@ -8,7 +8,7 @@ return [
         'parent_id' => '父类ID',
         'order' => '排序',
         'title' => '标题',
-        'is_directory' => '有子类？',
+        'is_directory' => '是否目录',
         'depth' => '层级',
         'path' => '完整父类ID',
     ],

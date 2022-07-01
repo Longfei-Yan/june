@@ -67,11 +67,15 @@ class ProductCategoryController extends AdminController
     {
         return Form::make(new ProductCategory(), function (Form $form) {
             $form->display('id');
-            $form->select('parent_id');
+            $form->select('parent_id')->options(function (){
+                return \App\Models\ProductCategory::selectOptions();
+            })->saving(function ($v) {
+                return (int) $v;
+            })->required();
             $form->hidden('order');
-            $form->text('title')->rules('require');
-            $form->hidden('is_directory');
-            $form->hidden('depth');
+            $form->text('title')->rules('required');
+            $form->switch('is_directory');
+            $form->hidden('depth')->default(1);
             $form->hidden('path');
 
             $form->display('created_at');
