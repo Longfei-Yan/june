@@ -14,6 +14,7 @@ return [
         'review_count' => '评论数',
         'price' => '价格',
         'stock' => '剩余库存',
+        'category_id' => '分类',
     ],
     'options' => [
 

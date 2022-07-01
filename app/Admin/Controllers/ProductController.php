@@ -19,8 +19,11 @@ class ProductController extends AdminController
     protected function grid()
     {
         return Grid::make(new Product(), function (Grid $grid) {
+            $grid->model()->with(['category']);
+
             $grid->column('id')->sortable();
             $grid->column('title');
+            $grid->column('category.title', '类目');
             $grid->column('description');
             $grid->column('image');
             $grid->column('on_sale')->switch();
@@ -83,6 +86,11 @@ class ProductController extends AdminController
     {
         return Form::make(Product::with('skus'), function (Form $form) {
             $form->display('id');
+            $form->select('category_id')->options(function (){
+                return \App\Models\ProductCategory::selectOptions();
+            })->saving(function ($v) {
+                return (int) $v;
+            })->required();
             $form->text('title')->rules('required');
             $form->image('image')->rules('required|image');
             $form->editor('description')->rules('required');
