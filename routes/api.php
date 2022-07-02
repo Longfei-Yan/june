@@ -19,4 +19,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::prefix('v1')->namespace('Api\V1')->name('api.v1.')->group(function () {
     // 用户注册
     Route::resource('users', UserController::class);
+
+    //获取TOKEN
+    Route::post('authorizations', 'AuthorizationController@store')->name('authorizations.store');
+    //刷新TOKEN
+    Route::put('authorizations/current', 'AuthorizationController@update')->name('authorizations.update');
+    //删除TOKEN
+    Route::delete('authorizations/current', 'AuthorizationController@destroy')->name('authorizations.destroy');
 });
