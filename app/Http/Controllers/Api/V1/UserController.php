@@ -47,6 +47,11 @@ class UserController extends Controller
         //
     }
 
+    public function me(Request $request)
+    {
+        return new UserResource($request->user());
+    }
+
     /**
      * Update the specified resource in storage.
      *

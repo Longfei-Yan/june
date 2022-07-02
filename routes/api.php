@@ -26,4 +26,11 @@ Route::prefix('v1')->namespace('Api\V1')->name('api.v1.')->group(function () {
     Route::put('authorizations/current', 'AuthorizationController@update')->name('authorizations.update');
     //删除TOKEN
     Route::delete('authorizations/current', 'AuthorizationController@destroy')->name('authorizations.destroy');
+
+    // 登录后可以访问的接口
+    Route::middleware('auth:api')->group(function() {
+        // 当前登录用户信息
+        Route::get('user', 'UserController@me')
+            ->name('user.show');
+    });
 });
