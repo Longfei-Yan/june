@@ -13,10 +13,23 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name',
-            'email' => 'required|email|unique:users|max:255',
-            'password' => 'required|alpha_dash|min:6',
-        ];
+        switch ($this->method()) {
+            case 'POST':
+                return [
+                    'name' => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name',
+                    'email' => 'required|email|unique:users|max:255',
+                    'password' => 'required|alpha_dash|min:6',
+                ];
+                break;
+            case 'PATCH':
+                return [
+                    'first_name' => 'required|max:50',
+                    'last_name' => 'required|max:50',
+                    'password' => 'nullable|confirmed|min:6',
+                    'birthdate' => 'nullable',
+                    'gender' => 'nullable',
+                ];
+                break;
+        }
     }
 }

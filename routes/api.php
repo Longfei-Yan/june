@@ -32,5 +32,8 @@ Route::prefix('v1')->namespace('Api\V1')->name('api.v1.')->group(function () {
         // 当前登录用户信息
         Route::get('user', 'UserController@me')
             ->name('user.show');
+        // 编辑登录用户信息
+        Route::patch('user', 'UserController@update')
+            ->name('user.update');
     });
 });
