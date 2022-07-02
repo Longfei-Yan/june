@@ -21,20 +21,20 @@ class ProductController extends Controller
     public function favor(Product $product, Request $request)
     {
         $user = $request->user();
-        if ($user->wishlists()->find($product->id)) {
-            return [];
+        if ($wishlist = $user->wishlists()->find($product->id)) {
+            return $wishlist;
         }
 
         $user->wishlists()->attach($product);
 
-        return [];
+        return $product;
     }
 
     public function disfavor(Product $product, Request $request)
     {
         $user = $request->user();
-        $user->favoriteProducts()->detach($product);
+        $user->wishlists()->detach($product);
 
-        return [];
+        return $product;
     }
 }

@@ -45,5 +45,9 @@ Route::prefix('v1')->namespace('Api\V1')->name('api.v1.')->group(function () {
         // 当前用户地址信息
         Route::get('/user-addresses', 'UserAddressController@index')
             ->name('user-addresses.index');
+
+        //商品收藏
+        Route::post('products/{product}/favorite', 'ProductController@favor')->name('products.favor');
+        Route::delete('products/{product}/favorite', 'ProductController@disfavor')->name('products.disfavor');
     });
 });
