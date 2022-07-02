@@ -17,5 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::prefix('v1')->namespace('Api\V1')->name('api.v1.')->group(function () {
-
+    // 用户注册
+    Route::resource('users', UserController::class);
 });
