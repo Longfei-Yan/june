@@ -14,8 +14,8 @@ class AuthorizationController extends Controller
         $credentials['email'] = $request->email;
         $credentials['password'] = $request->password;
 
-        if (!$token = \Auth::guard('api')->attempt($credentials)) {
-            throw new AuthenticationException('用户名或密码错误');
+        if (!$token = auth('api')->attempt($credentials)) {
+            throw new AuthenticationException('Email or password is wrong');
         }
 
         return $this->respondWithToken($token)->setStatusCode(201);
