@@ -27,6 +27,12 @@ Route::prefix('v1')->namespace('Api\V1')->name('api.v1.')->group(function () {
     //删除TOKEN
     Route::delete('authorizations/current', 'AuthorizationController@destroy')->name('authorizations.destroy');
 
+    // 公司执照信息
+    Route::get('license', 'SitesController@license')->name('sites.license');
+    Route::get('banners', 'SitesController@banners')->name('sites.banners');
+    Route::get('products', 'SitesController@products')->name('sites.products');
+    Route::get('articles', 'SitesController@articles')->name('sites.articles');
+
     // 登录后可以访问的接口
     Route::middleware('auth:api')->group(function() {
         // 当前登录用户信息
