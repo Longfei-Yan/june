@@ -32,6 +32,7 @@ Route::prefix('v1')->namespace('Api\V1')->name('api.v1.')->group(function () {
     Route::get('banners', 'SitesController@banners')->name('sites.banners');
     Route::get('products', 'SitesController@products')->name('sites.products');
     Route::get('articles', 'SitesController@articles')->name('sites.articles');
+    Route::get('products/{product}', 'ProductController@show')->name('products.show');
 
     // 登录后可以访问的接口
     Route::middleware('auth:api')->group(function() {
