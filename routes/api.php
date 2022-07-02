@@ -35,5 +35,8 @@ Route::prefix('v1')->namespace('Api\V1')->name('api.v1.')->group(function () {
         // 编辑登录用户信息
         Route::patch('user', 'UserController@update')
             ->name('user.update');
+        // 当前用户地址信息
+        Route::get('/user-addresses', 'UserAddressController@index')
+            ->name('user-addresses.index');
     });
 });
