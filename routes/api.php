@@ -56,6 +56,7 @@ Route::prefix('v1')->namespace('Api\V1')->name('api.v1.')->group(function () {
         //订单
         Route::post('orders', 'OrderController@store')->name('orders.store');
         Route::get('orders', 'OrderController@index')->name('orders.index');
+        Route::get('orders/{order}', 'OrderController@show')->name('orders.show');
 
     });
 });
