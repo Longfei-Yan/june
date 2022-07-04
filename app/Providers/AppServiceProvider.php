@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
@@ -26,5 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //将html文件解析引擎改为blade
         View::addExtension('html', 'blade');
+
+        JsonResource::withoutWrapping();
     }
 }
