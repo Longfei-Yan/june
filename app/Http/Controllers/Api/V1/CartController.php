@@ -5,10 +5,18 @@ namespace App\Http\Controllers\Api\V1;
 use App\Models\CartItem;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\CartRequest;
+use App\Models\ProductSku;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+    public function index(Request $request)
+    {
+        $cartItems = $request->user()->cartItems()->with(['productSku.product'])->get();
+
+        return $cartItems;
+    }
+
     public function add(CartRequest $request)
     {
         $user   = $request->user();
@@ -22,6 +30,7 @@ class CartController extends Controller
             $cart->update([
                 'amount' => $cart->amount + $amount,
             ]);
+            return $cart;
         } else {
 
             // 否则创建一个新的购物车记录
@@ -29,7 +38,14 @@ class CartController extends Controller
             $cart->user()->associate($user);
             $cart->productSku()->associate($skuId);
             $cart->save();
+            return $cart->addHidden('user');
         }
+
+    }
+
+    public function remove(ProductSku $sku, Request $request)
+    {
+        $request->user()->cartItems()->where('product_sku_id', $sku->id)->delete();
 
         return [];
     }

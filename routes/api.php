@@ -51,6 +51,8 @@ Route::prefix('v1')->namespace('Api\V1')->name('api.v1.')->group(function () {
         Route::delete('products/{product}/favorite', 'ProductController@disfavor')->name('products.disfavor');
         // 购物车
         Route::post('cart', 'CartController@add')->name('cart.add');
+        Route::get('cart', 'CartController@index')->name('cart.index');
+        Route::delete('cart/{sku}', 'CartController@remove')->name('cart.remove');
 
     });
 });
