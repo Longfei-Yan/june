@@ -15,6 +15,7 @@ use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Log;
 
 class SiteController extends AdminController
 {
@@ -33,7 +34,9 @@ class SiteController extends AdminController
             $grid->column('article_ids');
             $grid->column('mail_id');
             $grid->column('banner_ids');
-            $grid->column('process_status');
+            $grid->column('process_status')->display(function ($v){
+                return $v ? '已处理' : '未处理';
+            });
             $grid->column('remark');
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
@@ -114,21 +117,35 @@ class SiteController extends AdminController
                             $productIds[] = $product->id;
                         }
                     }
+                    $form->product_ids = implode(',', $productIds);
+                }else{
+                    $form->product_ids = '';
                 }
-                $form->product_ids = implode(',', $productIds);
 
                 //banner
-                $banner = Banner::inRandomOrder()->take(3)->get('id');
-                $form->banner_ids = Banner::doesntExist() ? '' : Banner::implode(',', $banner);
+                $banners = Banner::inRandomOrder()->take(3)->get('id');
+                $bannerIds = [];
+                if ($banners){
+                    foreach ($banners as $banner){
+                        $bannerIds[] = $banner->id;
+                    }
+                    $form->banner_ids = implode(',', $bannerIds);
+                }else{
+                    $form->banner_ids = '';
+                }
 
                 //文章
                 $artCate = ArticleCategory::get('id');
                 $articleIds = [];
-                foreach ($artCate as $itme){
-                    $article = Article::where('category_id', '=', $itme['id'])->inRandomOrder()->take(1)->get('id');
-                    $articleIds[] = $article[0]['id'];
+                if ($artCate) {
+                    foreach ($artCate as $itme) {
+                        $article = Article::where('category_id', '=', $itme['id'])->inRandomOrder()->take(1)->get('id');
+                        $articleIds[] = $article[0]['id'];
+                    }
+                    $form->article_ids = implode(',', $articleIds);
+                }else{
+                    $form->article_ids = '';
                 }
-                $form->article_ids = implode(',', $articleIds);
 
                 //邮箱
                 $emailId = Mail::inRandomOrder()->take(1)->get('id');

@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Site extends Model
 {
+    protected $casts = [
+        'process_status' => 'boolean'
+    ];
+
     public function license()
     {
         return $this->belongsTo(License::class);
