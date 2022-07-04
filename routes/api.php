@@ -55,6 +55,7 @@ Route::prefix('v1')->namespace('Api\V1')->name('api.v1.')->group(function () {
         Route::delete('cart/{sku}', 'CartController@remove')->name('cart.remove');
         //订单
         Route::post('orders', 'OrderController@store')->name('orders.store');
+        Route::get('orders', 'OrderController@index')->name('orders.index');
 
     });
 });
