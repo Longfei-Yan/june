@@ -9,7 +9,9 @@ use App\Models\Order;
 use App\Models\ProductSku;
 use App\Models\UserAddress;
 use Carbon\Carbon;
+use App\Jobs\CloseOrder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
 {
@@ -65,6 +67,9 @@ class OrderController extends Controller
 
             return $order;
         });
+
+        //关闭超时订单
+        $this->dispatch(new CloseOrder($order, config('app.order_ttl')));
 
         return $order;
     }
