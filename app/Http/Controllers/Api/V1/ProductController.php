@@ -15,7 +15,7 @@ class ProductController extends Controller
         if (!$product->on_sale) {
             abort('Product not available');
         }
-        return new ProductResource($product);
+        return new ProductResource($product->load('skus'));
     }
 
     public function favor(Product $product, Request $request)
