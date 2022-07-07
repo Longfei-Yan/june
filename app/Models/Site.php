@@ -7,8 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Site extends Model
 {
-    protected $casts = [
-        'process_status' => 'boolean'
+    const PENDING_STATUS = 0;
+    const COMPLETED_STATUS = 1;
+
+    public static $status = [
+        self::PENDING_STATUS=>'等待处理',
+        self::COMPLETED_STATUS=>'已经提交',
+    ];
+
+    public static $dot = [
+        self::PENDING_STATUS=>'primary',
+        self::COMPLETED_STATUS=>'info',
     ];
 
     public function license()

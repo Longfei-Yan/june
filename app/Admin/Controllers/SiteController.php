@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use Dcat\Admin\Widgets\Card;
 use App\Admin\Renderable\LicenseSelectTable;
 use App\Models\License;
 use App\Models\Site;
@@ -15,7 +16,6 @@ use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
-use Illuminate\Support\Facades\Log;
 
 class SiteController extends AdminController
 {
@@ -27,18 +27,23 @@ class SiteController extends AdminController
     protected function grid()
     {
         return Grid::make(new Site(), function (Grid $grid) {
+            $grid->model()->with(['license', 'mail']);
             $grid->column('id')->sortable();
-            $grid->column('domain');
-            $grid->column('license_id');
+            $grid->column('domain')->copyable();
+            $grid->column('license.name');
             $grid->column('product_ids');
             $grid->column('article_ids');
-            $grid->column('mail_id');
+            $grid->column('mail.email');
             $grid->column('banner_ids');
-            $grid->column('process_status')->display(function ($v){
-                return $v ? '已处理' : '未处理';
+            $grid->column('process_status')->using(Site::$status)->dot(Site::$dot);
+            $grid->column('remark') ->display('详情') // 设置按钮名称
+            ->expand(function () {
+                // 返回显示的详情
+                // 这里返回 content 字段内容，并用 Card 包裹起来
+                $card = new Card(null, $this->remark);
+
+                return "<div style='padding:10px 10px 0'>$card</div>";
             });
-            $grid->column('remark');
-            $grid->column('created_at');
             $grid->column('updated_at')->sortable();
 
             $grid->filter(function (Grid\Filter $filter) {
@@ -57,15 +62,15 @@ class SiteController extends AdminController
      */
     protected function detail($id)
     {
-        return Show::make($id, new Site(), function (Show $show) {
+        return Show::make($id, Site::with(['license', 'mail']), function (Show $show) {
             $show->field('id');
             $show->field('domain');
-            $show->field('license_id');
+            $show->field('license.name');
             $show->field('product_ids');
             $show->field('article_ids');
-            $show->field('mail_id');
+            $show->field('mail.email');
             $show->field('banner_ids');
-            $show->field('process_status');
+            $show->field('process_status')->using(Site::$status)->dot(Site::$dot);
             $show->field('remark');
             $show->field('created_at');
             $show->field('updated_at');
