@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserAddress extends Model
 {
     protected $fillable = [
+        'country',
         'province',
         'city',
         'district',

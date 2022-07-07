@@ -43,8 +43,11 @@ Route::prefix('v1')->namespace('Api\V1')->name('api.v1.')->group(function () {
         Route::patch('user', 'UserController@update')
             ->name('user.update');
         // 当前用户地址信息
-        Route::get('/user-addresses', 'UserAddressController@index')
+        Route::get('/user_addresses', 'UserAddressController@index')
             ->name('user-addresses.index');
+        Route::post('user_addresses', 'UserAddressController@store')->name('user_addresses.store');
+        Route::put('user_addresses/{user_address}', 'UserAddressController@update')->name('user_addresses.update');
+        Route::delete('user_addresses/{user_address}', 'UserAddressController@destory')->name('user_addresses.delete');
 
         //商品收藏
         Route::post('products/{product}/favorite', 'ProductController@favor')->name('products.favor');
