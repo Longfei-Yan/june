@@ -16,5 +16,10 @@ return [
         'users'         => '用户',
         'products'      => '商品',
         'licenses'      => '执照',
+        'mails'         => '邮箱',
+        'banners'       => '横幅',
+        'articles'      => '文章',
+        'sites'         => '网站',
+        'categories'    => '分类',
     ],
 ];
