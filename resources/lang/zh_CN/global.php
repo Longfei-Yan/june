@@ -22,6 +22,17 @@ return [
         'path'                  => '路径',
         'input'                 => '输入',
         'type'                  => '类型',
+        'title'                 => '标题',
+        'description'           => '描述',
+        'image'                 => '图片',
+        'on_sale'               => '是否上架',
+        'rating'                => '评分',
+        'sold_count'            => '销量',
+        'review_count'          => '评论数',
+        'price'                 => '价格',
+        'stock'                 => '剩余库存',
+        'rating_progress'       => '评分',
+        'products'              => '商品列表',
     ],
     'labels' => [
         'list'     => '列表',
@@ -32,6 +43,5 @@ return [
         'scaffold' => '代码生成器',
     ],
     'options' => [
-        //
     ],
 ];

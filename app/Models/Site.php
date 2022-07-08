@@ -30,6 +30,11 @@ class Site extends Model
         return $this->belongsTo(Mail::class);
     }
 
+    public function products()
+    {
+        return $this->belongsToMany(Product::class)->withTimestamps();
+    }
+
     /**
      * 以逗号分割的id字符串获取关联的数据集合
      * @param $strIds

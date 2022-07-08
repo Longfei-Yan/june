@@ -1,4 +1,4 @@
-<?php 
+<?php
 return [
     'labels' => [
         'Site' => '网站',

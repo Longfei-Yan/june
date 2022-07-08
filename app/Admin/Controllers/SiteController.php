@@ -27,11 +27,11 @@ class SiteController extends AdminController
     protected function grid()
     {
         return Grid::make(new Site(), function (Grid $grid) {
-            $grid->model()->with(['license', 'mail']);
+            $grid->model()->with(['license', 'mail', 'products']);
             $grid->column('id')->sortable();
             $grid->column('domain')->copyable();
-            $grid->column('license.name');
-            $grid->column('product_ids');
+            $grid->column('license.name','公司名称');
+            $grid->products()->pluck('title')->label();
             $grid->column('article_ids');
             $grid->column('mail.email');
             $grid->column('banner_ids');
@@ -62,11 +62,41 @@ class SiteController extends AdminController
      */
     protected function detail($id)
     {
-        return Show::make($id, Site::with(['license', 'mail']), function (Show $show) {
+        return Show::make($id, Site::with(['license', 'mail', 'products']), function (Show $show) {
             $show->field('id');
             $show->field('domain');
-            $show->field('license.name');
-            $show->field('product_ids');
+            $show->field('license.name', '公司名称');
+            $show->relation('products', function ($model) {
+                $grid = new Grid(Product::with(['category']));
+                $grid->model()->join('product_site', function ($join) use ($model) {
+                    $join->on('product_site.product_id', 'id')
+                        ->where('site_id', '=', $model->id);
+                });
+
+                // 设置路由
+                $grid->setResource('products');
+                $grid->column('id')->sortable();
+                $grid->column('title');
+                $grid->column('category.title', '分类');
+                $grid->column('description');
+                $grid->column('image')->image();
+                $grid->column('on_sale')->switch();
+                $grid->column('rating_progress')->progressBar();
+                $grid->column('sold_count');
+                $grid->column('review_count');
+                $grid->column('price');
+                $grid->column('created_at');
+                $grid->column('updated_at')->sortable();
+
+                $grid->filter(function (Grid\Filter $filter) {
+                    $filter->equal('id')->width('300px');
+                    $filter->where('title', function ($query) {
+                        $query->where('title', 'like', "%{$this->input}%");
+                    });
+                });
+
+                return $grid;
+            });
             $show->field('article_ids');
             $show->field('mail.email');
             $show->field('banner_ids');
@@ -84,7 +114,7 @@ class SiteController extends AdminController
      */
     protected function form()
     {
-        return Form::make(new Site(), function (Form $form) {
+        return Form::make(Site::with(['products']), function (Form $form) {
             $form->display('id');
             $form->text('domain')->rules(function (Form $form) {
                 // 如果不是编辑状态，则添加字段唯一验证
@@ -97,12 +127,10 @@ class SiteController extends AdminController
                 ->title(admin_trans_label('license'))
                 ->dialogWidth('50%') // 弹窗宽度，默认 800px
                 ->from(LicenseSelectTable::make(['id' => $form->getKey()])) // 设置渲染类实例，并传递自定义参数
-                ->model(License::class, 'id', 'name'); // 设置编辑数据显示
-            $form->hidden('product_ids');
+                ->model(License::class, 'id', 'name');
             $form->hidden('article_ids');
             $form->hidden('mail_id');
             $form->hidden('banner_ids');
-
             $form->switch('process_status')->default(0);
             $form->text('remark')->saving(function ($v){
                 return (string)$v;
@@ -122,6 +150,8 @@ class SiteController extends AdminController
                             $productIds[] = $product->id;
                         }
                     }
+                    Site::products()->detach();
+                    Site::products()->attach($productIds);
                     $form->product_ids = implode(',', $productIds);
                 }else{
                     $form->product_ids = '';

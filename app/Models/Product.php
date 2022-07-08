@@ -31,6 +31,12 @@ class Product extends Model
         return \Storage::disk('public')->url($this->attributes['image']);
     }
 
+    // 处理进度条需要1-100单位的数据
+    public function getRatingProgressAttribute()
+    {
+        return $this->attributes['rating']*20;
+    }
+
     public function category()
     {
         return $this->belongsTo(ProductCategory::class);
