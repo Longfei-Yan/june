@@ -107,6 +107,8 @@
       <path value="$PROJECT_DIR$/vendor/tymon/jwt-auth" />
       <path value="$PROJECT_DIR$/vendor/namshi/jose" />
       <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/fruitcake/laravel-cors" />
+      <path value="$PROJECT_DIR$/vendor/fruitcake/php-cors" />
     </include_path>
   </component>
   <component name="PhpInterpreters">

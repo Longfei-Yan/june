@@ -11,6 +11,7 @@
         "php": "^7.2.5|^8.0",
         "dcat/laravel-admin": "2.*",
         "fideloper/proxy": "^4.4",
+        "fruitcake/laravel-cors": "^3.0",
         "igaster/laravel-theme": "^2.0",
         "laravel/framework": "^6.20.26",
         "laravel/tinker": "^2.5",
