@@ -64,13 +64,13 @@ class ArticleController extends AdminController
     {
         return Form::make(new Article(), function (Form $form) {
             $form->display('id');
-            $form->text('title');
+            $form->text('title')->rules('required');
             $form->select('category_id')->options(function (){
                 return \App\Models\ArticleCategory::selectOptions();
             })->saving(function ($v) {
                 return (int) $v;
             })->required();
-            $form->editor('content');
+            $form->editor('content')->rules('required');
 
             $form->display('created_at');
             $form->display('updated_at');
