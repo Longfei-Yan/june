@@ -56,7 +56,7 @@ class MailController extends AdminController
     {
         return Form::make(new Mail(), function (Form $form) {
             $form->display('id');
-            $form->text('email');
+            $form->email('email')->rules('required');
 
             $form->display('created_at');
             $form->display('updated_at');
