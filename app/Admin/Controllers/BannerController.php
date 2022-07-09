@@ -56,7 +56,7 @@ class BannerController extends AdminController
     {
         return Form::make(new Banner(), function (Form $form) {
             $form->display('id');
-            $form->image('image')->uniqueName()->autoUpload();
+            $form->image('image')->uniqueName()->autoUpload()->rules('required');
 
             $form->display('created_at');
             $form->display('updated_at');
