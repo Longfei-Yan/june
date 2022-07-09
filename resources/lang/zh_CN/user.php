@@ -1,4 +1,4 @@
-<?php 
+<?php
 return [
     'labels' => [
         'User' => '用户',
@@ -10,8 +10,8 @@ return [
         'email_verified_at' => '邮箱验证',
         'password' => '密码',
         'remember_token' => '记住我',
-        'first_name' => 'First Name',
-        'last_name' => 'Last Name',
+        'first_name' => '名',
+        'last_name' => '姓',
         'birthdate' => '出生日期',
         'gender' => '性别',
     ],

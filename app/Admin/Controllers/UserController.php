@@ -72,15 +72,15 @@ class UserController extends AdminController
     {
         return Form::make(new User(), function (Form $form) {
             $form->display('id');
-            $form->text('name');
-            $form->text('email');
-            $form->text('email_verified_at');
-            $form->text('password');
-            $form->text('remember_token');
-            $form->text('first_name');
-            $form->text('last_name');
-            $form->text('birthdate');
-            $form->text('gender');
+            $form->text('name')->rules('required');
+            $form->email('email')->rules('required');
+            $form->password('password')->saving(function ($vaule){
+                return bcrypt($vaule);
+            });
+            $form->text('first_name')->default('');
+            $form->text('last_name')->default('');
+            $form->date('birthdate');
+            $form->radio('gender')->options([0 => '空', 1=> '男', 2=>'女'])->default(0);
 
             $form->display('created_at');
             $form->display('updated_at');

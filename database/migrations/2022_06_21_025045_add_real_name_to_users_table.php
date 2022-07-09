@@ -16,8 +16,8 @@ class AddRealNameToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->unsignedTinyInteger('gender')->default(0)->after('remember_token');
             $table->timestamp('birthdate')->nullable()->after('remember_token');
-            $table->string('last_name')->default('')->after('remember_token');
-            $table->string('first_name')->default('')->after('remember_token');
+            $table->string('last_name')->nullable()->after('remember_token');
+            $table->string('first_name')->nullable()->after('remember_token');
         });
     }
 
