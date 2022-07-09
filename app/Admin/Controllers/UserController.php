@@ -27,7 +27,7 @@ class UserController extends AdminController
             $grid->column('first_name');
             $grid->column('last_name');
             $grid->column('birthdate');
-            $grid->column('gender');
+            $grid->column('gender')->using(\App\Models\User::$status);
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
 
@@ -57,7 +57,7 @@ class UserController extends AdminController
             $show->field('first_name');
             $show->field('last_name');
             $show->field('birthdate');
-            $show->field('gender');
+            $show->field('gender')->using(\App\Models\User::$status);
             $show->field('created_at');
             $show->field('updated_at');
         });
@@ -80,7 +80,7 @@ class UserController extends AdminController
             $form->text('first_name')->default('');
             $form->text('last_name')->default('');
             $form->date('birthdate');
-            $form->radio('gender')->options([0 => '空', 1=> '男', 2=>'女'])->default(0);
+            $form->radio('gender')->options(\App\Models\User::$status)->default(\App\Models\User::NONE_STATUS);
 
             $form->display('created_at');
             $form->display('updated_at');

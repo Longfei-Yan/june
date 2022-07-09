@@ -41,6 +41,16 @@ class User extends Authenticatable implements MustVerifyEmailContract, JWTSubjec
         'email_verified_at' => 'datetime',
     ];
 
+    const NONE_STATUS = 0;
+    const MALE_STATUS = 1;
+    const FEMALE_STATUS = 2;
+
+    public static $status = [
+        self::NONE_STATUS=>'无',
+        self::MALE_STATUS=>'男',
+        self::FEMALE_STATUS=>'女',
+    ];
+
     public function addresses()
     {
         return $this->hasMany(UserAddress::class);
