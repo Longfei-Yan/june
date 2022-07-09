@@ -33,6 +33,7 @@ return [
         'stock'                 => '剩余库存',
         'rating_progress'       => '评分',
         'products'              => '商品列表',
+        'articles'              => '文章列表',
     ],
     'labels' => [
         'list'     => '列表',

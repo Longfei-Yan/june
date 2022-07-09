@@ -35,6 +35,11 @@ class Site extends Model
         return $this->belongsToMany(Product::class)->withTimestamps();
     }
 
+    public function articles()
+    {
+        return $this->belongsToMany(Article::class)->withTimestamps();
+    }
+
     /**
      * 以逗号分割的id字符串获取关联的数据集合
      * @param $strIds
