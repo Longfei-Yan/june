@@ -27,14 +27,18 @@ class SiteController extends AdminController
     protected function grid()
     {
         return Grid::make(new Site(), function (Grid $grid) {
-            $grid->model()->with(['license', 'mail', 'products', 'articles']);
+            $grid->model()->with(['license', 'mail', 'products', 'articles', 'banners']);
             $grid->column('id')->sortable();
             $grid->column('domain')->copyable();
             $grid->column('license.name','公司名称');
             $grid->products()->pluck('title')->label();
             //$grid->articles()->pluck('title')->label('danger');
             //$grid->column('mail.email');
-            $grid->column('banner_ids');
+            $grid->banners()->pluck('image')->display(function ($pictures) {
+
+                return json_decode($pictures, true);
+
+            })->image('', 100, 100);
             $grid->column('process_status')->using(Site::$status)->dot(Site::$dot);
             $grid->column('remark') ->display('详情') // 设置按钮名称
             ->expand(function () {
@@ -62,7 +66,7 @@ class SiteController extends AdminController
      */
     protected function detail($id)
     {
-        return Show::make($id, Site::with(['license', 'mail', 'products', 'articles']), function (Show $show) {
+        return Show::make($id, Site::with(['license', 'mail', 'products', 'articles', 'banners']), function (Show $show) {
             $show->field('id');
             $show->field('domain');
             $show->field('license.name', '公司名称');
@@ -117,6 +121,27 @@ class SiteController extends AdminController
                     $filter->where('title', function ($query) {
                         $query->where('title', 'like', "%{$this->input}%");
                     });
+                });
+
+                return $grid;
+            });
+            $show->relation('banners', function ($model) {
+
+                $grid = new Grid(new Banner);
+                $grid->model()->join('banner_site', function ($join) use ($model) {
+                    $join->on('banner_site.banner_id', 'id')
+                        ->where('site_id', '=', $model->id);
+                });
+
+                // 设置路由
+                $grid->setResource('banners');
+                $grid->column('id')->sortable();
+                $grid->column('image')->image();
+                $grid->column('created_at');
+                $grid->column('updated_at')->sortable();
+
+                $grid->filter(function (Grid\Filter $filter) {
+                    $filter->equal('id')->width('300px');
                 });
 
                 return $grid;
@@ -188,6 +213,8 @@ class SiteController extends AdminController
                     foreach ($banners as $banner){
                         $bannerIds[] = $banner->id;
                     }
+                    Site::banners()->detach();
+                    Site::banners()->attach($bannerIds);
                     $form->banner_ids = implode(',', $bannerIds);
                 }else{
                     $form->banner_ids = '';
