@@ -65,7 +65,7 @@ class ProductCategoryController extends AdminController
      */
     protected function form()
     {
-        return Form::make(new ProductCategory(), function (Form $form) {
+        return Form::make(new ProductCategory, function (Form $form) {
             $form->display('id');
             $form->select('parent_id')->options(function (){
                 return \App\Models\ProductCategory::selectOptions();
