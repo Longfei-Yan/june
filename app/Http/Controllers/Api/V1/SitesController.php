@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\V1\CommentRequest;
 use App\Http\Resources\ArticleResource;
 use App\Http\Resources\BannerResource;
 use App\Http\Resources\LicenseResource;
@@ -48,6 +49,16 @@ class SitesController extends Controller
     {
         $articles = $this->site->articles;
         return ArticleResource::collection($articles);
+    }
+
+    public function addComment(CommentRequest $request)
+    {
+        $this->site->comments()->create($request->only([
+            'name',
+            'email',
+            'subject',
+            'message',
+        ]));
     }
 
 }

@@ -21,5 +21,6 @@ return [
         'articles'      => '文章',
         'sites'         => '网站',
         'categories'    => '分类',
+        'comments'      => '留言',
     ],
 ];

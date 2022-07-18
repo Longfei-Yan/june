@@ -35,6 +35,8 @@ Route::prefix('v1')->namespace('Api\V1')->name('api.v1.')->group(function () {
     Route::get('products', 'SitesController@products')->name('sites.products');
     // 公司文章列表
     Route::get('articles', 'SitesController@articles')->name('sites.articles');
+    // 留言
+    Route::post('comment', 'SitesController@addComment')->name('sites.add_comment');
 
     // 登录后可以访问的接口
     Route::middleware('auth:api')->group(function() {

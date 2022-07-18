@@ -14,6 +14,9 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection price
      * @property Grid\Column|Collection stock
      * @property Grid\Column|Collection order
+     * @property Grid\Column|Collection products
+     * @property Grid\Column|Collection articles
+     * @property Grid\Column|Collection banners
      * @property Grid\Column|Collection id
      * @property Grid\Column|Collection name
      * @property Grid\Column|Collection type
@@ -39,11 +42,17 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection avatar
      * @property Grid\Column|Collection remember_token
      * @property Grid\Column|Collection depth
+     * @property Grid\Column|Collection article_id
+     * @property Grid\Column|Collection site_id
      * @property Grid\Column|Collection category_id
      * @property Grid\Column|Collection content
+     * @property Grid\Column|Collection banner_id
      * @property Grid\Column|Collection image
      * @property Grid\Column|Collection product_sku_id
      * @property Grid\Column|Collection amount
+     * @property Grid\Column|Collection email
+     * @property Grid\Column|Collection subject
+     * @property Grid\Column|Collection message
      * @property Grid\Column|Collection connection
      * @property Grid\Column|Collection queue
      * @property Grid\Column|Collection payload
@@ -53,7 +62,6 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection about
      * @property Grid\Column|Collection photo
      * @property Grid\Column|Collection logo
-     * @property Grid\Column|Collection email
      * @property Grid\Column|Collection order_id
      * @property Grid\Column|Collection product_id
      * @property Grid\Column|Collection rating
@@ -83,7 +91,7 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection product_ids
      * @property Grid\Column|Collection article_ids
      * @property Grid\Column|Collection mail_id
-     * @property Grid\Column|Collection banner_id
+     * @property Grid\Column|Collection banner_ids
      * @property Grid\Column|Collection process_status
      * @property Grid\Column|Collection country
      * @property Grid\Column|Collection province
@@ -101,6 +109,9 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection price(string $label = null)
      * @method Grid\Column|Collection stock(string $label = null)
      * @method Grid\Column|Collection order(string $label = null)
+     * @method Grid\Column|Collection products(string $label = null)
+     * @method Grid\Column|Collection articles(string $label = null)
+     * @method Grid\Column|Collection banners(string $label = null)
      * @method Grid\Column|Collection id(string $label = null)
      * @method Grid\Column|Collection name(string $label = null)
      * @method Grid\Column|Collection type(string $label = null)
@@ -126,11 +137,17 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection avatar(string $label = null)
      * @method Grid\Column|Collection remember_token(string $label = null)
      * @method Grid\Column|Collection depth(string $label = null)
+     * @method Grid\Column|Collection article_id(string $label = null)
+     * @method Grid\Column|Collection site_id(string $label = null)
      * @method Grid\Column|Collection category_id(string $label = null)
      * @method Grid\Column|Collection content(string $label = null)
+     * @method Grid\Column|Collection banner_id(string $label = null)
      * @method Grid\Column|Collection image(string $label = null)
      * @method Grid\Column|Collection product_sku_id(string $label = null)
      * @method Grid\Column|Collection amount(string $label = null)
+     * @method Grid\Column|Collection email(string $label = null)
+     * @method Grid\Column|Collection subject(string $label = null)
+     * @method Grid\Column|Collection message(string $label = null)
      * @method Grid\Column|Collection connection(string $label = null)
      * @method Grid\Column|Collection queue(string $label = null)
      * @method Grid\Column|Collection payload(string $label = null)
@@ -140,7 +157,6 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection about(string $label = null)
      * @method Grid\Column|Collection photo(string $label = null)
      * @method Grid\Column|Collection logo(string $label = null)
-     * @method Grid\Column|Collection email(string $label = null)
      * @method Grid\Column|Collection order_id(string $label = null)
      * @method Grid\Column|Collection product_id(string $label = null)
      * @method Grid\Column|Collection rating(string $label = null)
@@ -170,7 +186,7 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection product_ids(string $label = null)
      * @method Grid\Column|Collection article_ids(string $label = null)
      * @method Grid\Column|Collection mail_id(string $label = null)
-     * @method Grid\Column|Collection banner_id(string $label = null)
+     * @method Grid\Column|Collection banner_ids(string $label = null)
      * @method Grid\Column|Collection process_status(string $label = null)
      * @method Grid\Column|Collection country(string $label = null)
      * @method Grid\Column|Collection province(string $label = null)
@@ -193,6 +209,9 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection price
      * @property Show\Field|Collection stock
      * @property Show\Field|Collection order
+     * @property Show\Field|Collection products
+     * @property Show\Field|Collection articles
+     * @property Show\Field|Collection banners
      * @property Show\Field|Collection id
      * @property Show\Field|Collection name
      * @property Show\Field|Collection type
@@ -218,11 +237,17 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection avatar
      * @property Show\Field|Collection remember_token
      * @property Show\Field|Collection depth
+     * @property Show\Field|Collection article_id
+     * @property Show\Field|Collection site_id
      * @property Show\Field|Collection category_id
      * @property Show\Field|Collection content
+     * @property Show\Field|Collection banner_id
      * @property Show\Field|Collection image
      * @property Show\Field|Collection product_sku_id
      * @property Show\Field|Collection amount
+     * @property Show\Field|Collection email
+     * @property Show\Field|Collection subject
+     * @property Show\Field|Collection message
      * @property Show\Field|Collection connection
      * @property Show\Field|Collection queue
      * @property Show\Field|Collection payload
@@ -232,7 +257,6 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection about
      * @property Show\Field|Collection photo
      * @property Show\Field|Collection logo
-     * @property Show\Field|Collection email
      * @property Show\Field|Collection order_id
      * @property Show\Field|Collection product_id
      * @property Show\Field|Collection rating
@@ -262,7 +286,7 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection product_ids
      * @property Show\Field|Collection article_ids
      * @property Show\Field|Collection mail_id
-     * @property Show\Field|Collection banner_id
+     * @property Show\Field|Collection banner_ids
      * @property Show\Field|Collection process_status
      * @property Show\Field|Collection country
      * @property Show\Field|Collection province
@@ -280,6 +304,9 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection price(string $label = null)
      * @method Show\Field|Collection stock(string $label = null)
      * @method Show\Field|Collection order(string $label = null)
+     * @method Show\Field|Collection products(string $label = null)
+     * @method Show\Field|Collection articles(string $label = null)
+     * @method Show\Field|Collection banners(string $label = null)
      * @method Show\Field|Collection id(string $label = null)
      * @method Show\Field|Collection name(string $label = null)
      * @method Show\Field|Collection type(string $label = null)
@@ -305,11 +332,17 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection avatar(string $label = null)
      * @method Show\Field|Collection remember_token(string $label = null)
      * @method Show\Field|Collection depth(string $label = null)
+     * @method Show\Field|Collection article_id(string $label = null)
+     * @method Show\Field|Collection site_id(string $label = null)
      * @method Show\Field|Collection category_id(string $label = null)
      * @method Show\Field|Collection content(string $label = null)
+     * @method Show\Field|Collection banner_id(string $label = null)
      * @method Show\Field|Collection image(string $label = null)
      * @method Show\Field|Collection product_sku_id(string $label = null)
      * @method Show\Field|Collection amount(string $label = null)
+     * @method Show\Field|Collection email(string $label = null)
+     * @method Show\Field|Collection subject(string $label = null)
+     * @method Show\Field|Collection message(string $label = null)
      * @method Show\Field|Collection connection(string $label = null)
      * @method Show\Field|Collection queue(string $label = null)
      * @method Show\Field|Collection payload(string $label = null)
@@ -319,7 +352,6 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection about(string $label = null)
      * @method Show\Field|Collection photo(string $label = null)
      * @method Show\Field|Collection logo(string $label = null)
-     * @method Show\Field|Collection email(string $label = null)
      * @method Show\Field|Collection order_id(string $label = null)
      * @method Show\Field|Collection product_id(string $label = null)
      * @method Show\Field|Collection rating(string $label = null)
@@ -349,7 +381,7 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection product_ids(string $label = null)
      * @method Show\Field|Collection article_ids(string $label = null)
      * @method Show\Field|Collection mail_id(string $label = null)
-     * @method Show\Field|Collection banner_id(string $label = null)
+     * @method Show\Field|Collection banner_ids(string $label = null)
      * @method Show\Field|Collection process_status(string $label = null)
      * @method Show\Field|Collection country(string $label = null)
      * @method Show\Field|Collection province(string $label = null)

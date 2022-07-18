@@ -22,5 +22,6 @@ Route::group([
     $router->resource('articles', ArticleController::class);
     $router->resource('product-categories', ProductCategoryController::class);
     $router->resource('sites', SiteController::class);
+    $router->resource('comments', CommentController::class);
 
 });

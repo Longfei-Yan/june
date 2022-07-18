@@ -45,6 +45,11 @@ class Site extends Model
         return $this->belongsToMany(Banner::class)->withTimestamps();
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     /**
      * 以逗号分割的id字符串获取关联的数据集合
      * @param $strIds
