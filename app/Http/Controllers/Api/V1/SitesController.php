@@ -34,19 +34,19 @@ class SitesController extends Controller
 
     public function banners()
     {
-        $banners = $this->site->dataModel(new Banner, $this->site->banner_ids)->get();
+        $banners = $this->site->banners;
         return BannerResource::collection($banners);
     }
 
     public function products()
     {
-        $products = $this->site->dataModel(new Product, $this->site->product_ids)->where('on_sale', true)->get();
+        $products = $this->site->products;
         return ProductResource::collection($products);
     }
 
     public function articles()
     {
-        $articles = $this->site->dataModel(new Article, $this->site->article_ids)->get();
+        $articles = $this->site->articles;
         return ArticleResource::collection($articles);
     }
 
