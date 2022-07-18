@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->text('description');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->boolean('on_sale')->default(true);
             $table->float('rating')->default(5);
             $table->unsignedInteger('sold_count')->default(0);

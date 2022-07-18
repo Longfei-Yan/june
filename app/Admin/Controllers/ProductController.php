@@ -26,7 +26,7 @@ class ProductController extends AdminController
             $grid->column('title');
             $grid->column('category.title', '类目');
             $grid->column('description');
-            $grid->column('image');
+            $grid->column('image')->image();
             $grid->column('on_sale')->switch();
             $grid->column('rating');
             $grid->column('sold_count');
@@ -93,7 +93,7 @@ class ProductController extends AdminController
                 return (int) $v;
             })->required();
             $form->text('title')->rules('required');
-            $form->image('image')->rules('required|image');
+            $form->image('image')->rules('required|image')->move('images/products')->uniqueName()->autoUpload();
             $form->editor('description')->rules('required');
             $form->switch('on_sale')->default(0);
             // 一对多
