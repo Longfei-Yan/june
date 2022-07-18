@@ -15,9 +15,9 @@ class UserAddressController extends Controller
         return new UserAddressesResource($request->user()->addresses);
     }
 
-    public function store(UserAddress $userAddress, UserAddressRequest $request)
+    public function store(UserAddressRequest $request)
     {
-        $request->user()->addresses()->create($request->only([
+        $userAddress = $request->user()->addresses()->create($request->only([
             'country',
             'province',
             'city',
@@ -28,6 +28,8 @@ class UserAddressController extends Controller
             'last_name',
             'phone',
         ]));
+
+        return new UserAddressesResource($userAddress);
     }
 
     public function update(UserAddress $userAddress, UserAddressRequest $request)
