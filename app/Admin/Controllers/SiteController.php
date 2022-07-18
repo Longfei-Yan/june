@@ -199,8 +199,8 @@ class SiteController extends AdminController
                             $productIds[] = $product->id;
                         }
                     }
-                    Site::products()->detach();
-                    Site::products()->attach($productIds);
+                    $form->model()->products()->detach();
+                    $form->model()->products()->attach($productIds);
                     $form->product_ids = implode(',', $productIds);
                 }else{
                     $form->product_ids = '';
@@ -213,8 +213,8 @@ class SiteController extends AdminController
                     foreach ($banners as $banner){
                         $bannerIds[] = $banner->id;
                     }
-                    Site::banners()->detach();
-                    Site::banners()->attach($bannerIds);
+                    $form->model()->banners()->detach();
+                    $form->model()->banners()->attach($bannerIds);
                     $form->banner_ids = implode(',', $bannerIds);
                 }else{
                     $form->banner_ids = '';
@@ -228,16 +228,16 @@ class SiteController extends AdminController
                         $article = Article::where('category_id', '=', $itme['id'])->inRandomOrder()->take(1)->get('id');
                         $articleIds[] = $article[0]['id'];
                     }
-                    Site::articles()->detach();
-                    Site::articles()->attach($articleIds);
+                    $form->model()->articles()->detach();
+                    $form->model()->articles()->attach($articleIds);
                     $form->article_ids = implode(',', $articleIds);
                 }else{
                     $form->article_ids = '';
                 }
 
                 //邮箱
-                $emailId = Mail::inRandomOrder()->take(1)->get('id');
-                $form->mail_id = $emailId[0]['id'];
+                $emailId = Mail::inRandomOrder()->take(1)->first('id');
+                $form->mail_id = $emailId->id;
             });
         });
     }
