@@ -19,8 +19,8 @@ class CreateLicensesTable extends Migration
             $table->string('title')->default('')->comment('标题');
             $table->string('address')->default('')->comment('地址');
             $table->text('about')->comment('关于');
-            $table->string('photo')->default('')->comment('快照');
-            $table->string('logo')->default('')->comment('LOGO');
+            $table->string('photo')->nullable()->comment('快照');
+            $table->string('logo')->nullable()->comment('LOGO');
             $table->timestamps();
         });
     }
