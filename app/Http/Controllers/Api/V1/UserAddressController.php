@@ -17,7 +17,6 @@ class UserAddressController extends Controller
 
     public function store(UserAddress $userAddress, UserAddressRequest $request)
     {
-        $this->authorize('own', $userAddress);
         $request->user()->addresses()->create($request->only([
             'country',
             'province',
@@ -29,7 +28,6 @@ class UserAddressController extends Controller
             'last_name',
             'phone',
         ]));
-
     }
 
     public function update(UserAddress $userAddress, UserAddressRequest $request)
