@@ -46,6 +46,8 @@ class UserAddressController extends Controller
             'last_name',
             'phone',
         ]));
+
+        return $userAddress;
     }
 
     public function destory(UserAddress $userAddress)
