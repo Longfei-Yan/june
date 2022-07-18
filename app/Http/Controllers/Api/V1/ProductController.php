@@ -37,4 +37,11 @@ class ProductController extends Controller
 
         return $product;
     }
+
+    public function favorites(Request $request)
+    {
+        $products = $request->user()->wishlists()->paginate();
+
+        return ProductResource::collection($products);
+    }
 }
