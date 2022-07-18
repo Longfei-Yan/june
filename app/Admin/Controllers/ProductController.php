@@ -93,7 +93,7 @@ class ProductController extends AdminController
                 return (int) $v;
             })->required();
             $form->text('title')->rules('required');
-            $form->image('image')->rules('required|image')->move('images/products')->uniqueName()->autoUpload();
+            $form->image('image')->rules('required|image')->move('images/goods')->uniqueName()->autoUpload();
             $form->editor('description')->rules('required');
             $form->switch('on_sale')->default(0);
             // 一对多
