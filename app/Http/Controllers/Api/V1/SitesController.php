@@ -8,9 +8,6 @@ use App\Http\Resources\ArticleResource;
 use App\Http\Resources\BannerResource;
 use App\Http\Resources\LicenseResource;
 use App\Http\Resources\ProductResource;
-use App\Models\Article;
-use App\Models\Banner;
-use App\Models\Product;
 use App\Models\Site;
 use Illuminate\Http\Request;
 
@@ -53,12 +50,14 @@ class SitesController extends Controller
 
     public function addComment(CommentRequest $request)
     {
-        $this->site->comments()->create($request->only([
+        $comment = $this->site->comments()->create($request->only([
             'name',
             'email',
             'subject',
             'message',
         ]));
+
+        return $comment;
     }
 
 }
