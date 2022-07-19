@@ -85,7 +85,7 @@ class ProductCategory extends Model implements Sortable
     {
         $options = ['0'=> '顶级'];
         if (self::exists()){
-            $categories = self::where('is_directory', 0)->get(['id', 'title'])->toArray();
+            $categories = self::where('is_directory', 1)->get(['id', 'title'])->toArray();
             $array = array_column($categories, 'title', 'id');
             return $options+$array;
         }
