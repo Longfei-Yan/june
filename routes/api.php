@@ -28,15 +28,15 @@ Route::prefix('v1')->namespace('Api\V1')->name('api.v1.')->group(function () {
     Route::delete('authorizations/current', 'AuthorizationController@destroy')->name('authorizations.destroy');
 
     // 公司执照信息
-    Route::get('license', 'SitesController@license')->name('sites.license');
+    Route::get('license', 'SiteController@license')->name('sites.license');
     // 公司横幅列表
-    Route::get('banners', 'SitesController@banners')->name('sites.banners');
+    Route::get('banners', 'SiteController@banners')->name('sites.banners');
     // 公司商品列表
-    Route::get('products', 'SitesController@products')->name('sites.products');
+    Route::get('products', 'SiteController@products')->name('sites.products');
     // 公司文章列表
-    Route::get('articles', 'SitesController@articles')->name('sites.articles');
+    Route::get('articles', 'SiteController@articles')->name('sites.articles');
     // 留言
-    Route::post('comment', 'SitesController@addComment')->name('sites.add_comment');
+    Route::post('comment', 'SiteController@addComment')->name('sites.add_comment');
 
     // 登录后可以访问的接口
     Route::middleware('auth:api')->group(function() {

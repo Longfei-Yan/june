@@ -11,7 +11,7 @@ use App\Http\Resources\ProductResource;
 use App\Models\Site;
 use Illuminate\Http\Request;
 
-class SitesController extends Controller
+class SiteController extends Controller
 {
     protected $host;
 
@@ -25,6 +25,9 @@ class SitesController extends Controller
 
     public function license()
     {
+        if (is_null($this->site)){
+            abort(404, '404 not found');
+        }
         $license = $this->site->license;
         $license['email'] = $this->site->mail->email;
         return new LicenseResource($license);
@@ -32,18 +35,27 @@ class SitesController extends Controller
 
     public function banners()
     {
+        if (is_null($this->site)){
+            abort(404, '404 not found');
+        }
         $banners = $this->site->banners;
         return BannerResource::collection($banners);
     }
 
     public function products()
     {
+        if (is_null($this->site)){
+            abort(404, '404 not found');
+        }
         $products = $this->site->products;
         return ProductResource::collection($products);
     }
 
     public function articles()
     {
+        if (is_null($this->site)){
+            abort(404, '404 not found');
+        }
         $articles = $this->site->articles;
         return ArticleResource::collection($articles);
     }
