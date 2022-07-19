@@ -20,7 +20,7 @@ class CreateProductCategoriesTable extends Migration
             $table->string('title')->default('')->comment('标题');
             $table->tinyInteger('is_directory')->comment('是否有子类');
             $table->unsignedInteger('depth')->default('1')->comment('层级');
-            $table->string('path')->default('')->comment('完整父类ID');
+            $table->string('path')->nullable()->comment('完整父类ID');
             $table->timestamps();
         });
     }

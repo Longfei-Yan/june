@@ -30,6 +30,18 @@ class ProductCategory extends Model implements Sortable
             }
         });
 
+        // 监听 Category 的创建事件，用于初始化 path 和 level 字段值
+        static::updating(function (ProductCategory $category) {
+            // 如果创建的是一个根类目
+            if (is_null($category->parent_id) or $category->parent_id==0) {
+                // 将 path 设为 -
+                $category->path  = '-';
+            } else {
+                // 将 path 值设为父类目的 path 追加父类目 ID 以及最后跟上一个 - 分隔符
+                $category->path  = $category->parent->path.$category->parent_id.'-';
+            }
+        });
+
         static::deleted(function (ProductCategory $category){
             if (!is_null($category->id)){
                 $category->children()->delete();
